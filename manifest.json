@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Ticketbox Trợ lý mua vé",
+  "version": "1.0.1",
+  "minimum_chrome_version": "120",
+  "description": "Canh giờ, nhận diện luồng và hướng dẫn từng bước mua vé Ticketbox với xác nhận thủ công.",
+  "permissions": [
+    "alarms",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://ticketbox.vn/*",
+    "https://*.ticketbox.vn/*"
+  ],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "action": {
+    "default_title": "Ticketbox Trợ lý mua vé",
+    "default_popup": "src/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://ticketbox.vn/*",
+        "https://*.ticketbox.vn/*"
+      ],
+      "js": [
+        "src/common.js",
+        "src/content.js"
+      ],
+      "css": [
+        "src/content.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

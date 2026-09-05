@@ -1,0 +1,13 @@
+{
+  "name": "ticketbox-manual-assistant",
+  "version": "1.0.1",
+  "private": true,
+  "description": "Tiện ích hỗ trợ thao tác mua vé Ticketbox có xác nhận thủ công.",
+  "scripts": {
+    "check": "node --check src/common.js && node --check src/background.js && node --check src/content.js && node --check src/popup.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

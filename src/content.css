@@ -1,0 +1,13 @@
+.tbx-assistant-highlight {
+  outline: 4px solid #31d982 !important;
+  outline-offset: 4px !important;
+  box-shadow: 0 0 0 8px rgba(49, 217, 130, 0.24) !important;
+  animation: tbx-assistant-pulse 1.25s ease-in-out infinite !important;
+  position: relative !important;
+  z-index: 2147483000 !important;
+}
+
+@keyframes tbx-assistant-pulse {
+  0%, 100% { box-shadow: 0 0 0 5px rgba(49, 217, 130, 0.18); }
+  50% { box-shadow: 0 0 0 11px rgba(49, 217, 130, 0.34); }
+}

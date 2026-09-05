@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ticketbox Trợ lý mua vé</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <div class="brand-mark" aria-hidden="true">T</div>
+      <div>
+        <p class="eyebrow">TRỢ LÝ THỦ CÔNG</p>
+        <h1>Ticketbox</h1>
+      </div>
+      <span id="statusBadge" class="status-badge">Chưa canh giờ</span>
+    </header>
+
+    <section class="page-status" aria-live="polite">
+      <span class="live-dot"></span>
+      <div>
+        <strong id="pageState">Chưa kết nối trang</strong>
+        <p id="pageHint">Mở một trang sự kiện Ticketbox.</p>
+      </div>
+    </section>
+
+    <form id="configForm" novalidate>
+      <label class="field field-wide">
+        <span>Link sự kiện</span>
+        <div class="input-with-action">
+          <input id="eventUrl" type="url" inputmode="url" placeholder="https://ticketbox.vn/event/..." required>
+          <button id="useCurrentUrl" class="inline-button" type="button" title="Lấy tab Ticketbox hiện tại">Lấy tab</button>
+        </div>
+      </label>
+
+      <label class="field field-wide">
+        <span>Giờ mở bán</span>
+        <input id="saleTime" type="datetime-local" step="1" required>
+        <small>Tiện ích chỉ nạp lại/mở trang một lần tại thời điểm này.</small>
+      </label>
+
+      <label class="field field-wide">
+        <span>Ngày/suất muốn mua</span>
+        <input id="targetDate" type="text" placeholder="Ví dụ: 25 Tháng 09, 2026">
+        <small>Nhập đúng phần ngày hiển thị trong mục Lịch diễn.</small>
+      </label>
+
+      <fieldset class="mode-picker field-wide">
+        <legend>Kiểu chọn vé</legend>
+        <label>
+          <input type="radio" name="mode" value="seat" checked>
+          <span><strong>Ghế cụ thể</strong><small>Chọn ghế trên sơ đồ</small></span>
+        </label>
+        <label>
+          <input type="radio" name="mode" value="quantity">
+          <span><strong>Theo số lượng</strong><small>Chọn khu rồi chọn số vé</small></span>
+        </label>
+      </fieldset>
+
+      <div class="grid">
+        <label class="field">
+          <span>Khu ưu tiên</span>
+          <input id="area" type="text" placeholder="VIP, MVP…">
+        </label>
+        <label class="field">
+          <span>Số vé / ghế</span>
+          <input id="quantity" type="number" min="1" max="10" value="1">
+        </label>
+      </div>
+
+      <label id="seatField" class="field field-wide">
+        <span>Ghế ưu tiên theo thứ tự</span>
+        <textarea id="seats" rows="3" placeholder="E1-11, E1-10, E1-12"></textarea>
+        <small>Trợ lý thử nhận diện đủ số ghế từ trái sang phải; ghế bị giữ sẽ bị bỏ qua.</small>
+      </label>
+
+      <label class="sound-toggle field-wide">
+        <input id="sound" type="checkbox" checked>
+        <span>
+          <strong>Báo khi hết vé hoặc mất ghế</strong>
+          <small>Âm báo có thể cần một lần tương tác với trang.</small>
+        </span>
+      </label>
+
+      <p id="formMessage" class="form-message" role="alert"></p>
+
+      <div class="actions field-wide">
+        <button id="armButton" class="primary" type="submit">Lưu & canh giờ</button>
+        <button id="locateButton" class="secondary" type="button">Định vị bước này</button>
+        <button id="disarmButton" class="ghost" type="button">Dừng canh giờ</button>
+      </div>
+    </form>
+
+    <footer>
+      CAPTCHA, hàng chờ, nút mua và thanh toán luôn do bạn thao tác trực tiếp.
+    </footer>
+  </main>
+  <script src="common.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
